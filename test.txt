@@ -1,0 +1,16 @@
+max mIOU model saved to: checkpoints/STDC1_seg/pths/model_maxmIOU50.pth
+max mIOU model saved to: checkpoints/STDC1_seg/pths/model_maxmIOU75.pth
+mIOU50 is: 0.7125983834266663, mIOU75 is: 0.7525562644004822
+maxmIOU50 is: 0.7125983834266663, maxmIOU75 is: 0.7525562644004822.
+
+loss_avg 3.2902373266220093
+it: 60000/60000, lr: 0.000001, loss: 3.2902, boundery_bce_loss: 0.0945, boundery_dice_loss: 0.6645, eta: 0:00:01, time: 51.4207
+
+
+
+直接BE-STDC，达到的效果
+mIOU50 is: 0.7169143557548523, mIOU75 is: 0.7449958920478821
+maxmIOU50 is: 0.7229123711585999(提升精度，速度), maxmIOU75 is: 0.7481843829154968.
+
+
+加宽、加厚SP分支，减少STDC层次。
