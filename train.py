@@ -464,13 +464,13 @@ def smallVal():
         world_size=torch.cuda.device_count(),
         rank=args.local_rank
     )
-
+    print('args.mode', args.mode)
     ## dataset
     n_classes = 19
     n_workers_val = args.n_workers_val
 
 
-    dsval = CityScapes(dspth, mode='val', randomscale=randomscale)#val
+    dsval = CityScapes(dspth, mode=args.mode, randomscale=randomscale)#'val'
     sampler_val = torch.utils.data.distributed.DistributedSampler(dsval)
     dlval = DataLoader(dsval,
                        batch_size=1,#2 to1
@@ -532,5 +532,9 @@ def datasettest(n_classes = 19):
 
 
 if __name__ == "__main__":
-    smallVal()
-    #train()
+    args = parse_args()
+    print(args.mode)
+    if (args.mode == 'train'):
+        train()
+    else:
+        smallVal()
