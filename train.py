@@ -148,15 +148,11 @@ def train():
     save_pth_path = os.path.join(args.respath, 'pths')
     dspth = './data'
     
-    # print(save_pth_path)
-    # print(osp.exists(save_pth_path))
-    # if not osp.exists(save_pth_path) and dist.get_rank()==0: 
+
     if not osp.exists(save_pth_path):
         os.makedirs(save_pth_path)
 
-    ##print('args.local_rank ', args.local_rank)
     torch.cuda.set_device(args.local_rank)
-    ##torch.cuda.set_device(0)
     dist.init_process_group(
                 backend = 'nccl',
                 init_method = 'tcp://127.0.0.1:33274',
@@ -203,8 +199,7 @@ def train():
                     num_workers = n_workers_train,
                     pin_memory = False,
                     drop_last = True)
-    ##print('tmp DataLoader n_img_per_gpu', n_img_per_gpu)
-    # exit(0)
+
     dsval = CityScapes(dspth, mode='val', randomscale=randomscale)
     sampler_val = torch.utils.data.distributed.DistributedSampler(dsval)
     dlval = DataLoader(dsval,
@@ -213,7 +208,7 @@ def train():
                     sampler = sampler_val,
                     num_workers = n_workers_val,
                     drop_last = False)
-    ##print('tmp dsval n_workers_val', n_workers_val)
+
     ## model
     ignore_idx = 255
     print('args.backbone',args.backbone)
@@ -230,7 +225,7 @@ def train():
             output_device = args.local_rank,
             find_unused_parameters=True
             )
-    ##print('tmp net init', args.local_rank)
+
     score_thres = 0.7
     n_min = n_img_per_gpu*cropsize[0]*cropsize[1]//16
     criteria_p = OhemCELoss(thresh=score_thres, n_min=n_min, ignore_lb=ignore_idx)
@@ -282,27 +277,26 @@ def train():
             sampler.set_epoch(epoch)
             diter = iter(dl)
             im, lb = next(diter)
-        ##print('tmp it', it)
+
         im = im.cuda()#
         lb = lb.cuda()#
         H, W = im.size()[2:]
-        #print('h',str(H))
-        #print('w', str(W))
+
         lb = torch.squeeze(lb, 1)
 
         optim.zero_grad()
-        ##print('tmp optim.zero_grad()')
+
 
         if use_boundary_2 and use_boundary_4 and use_boundary_8:
             out, out16, out32, detail2, detail4, detail8 = net(im)
         
         if (not use_boundary_2) and use_boundary_4 and (not use_boundary_8):
-            out, out16, out32, detail4, out8 = net(im)#xyy add out8
+            out, out16, out32, detail4, out8 = net(im)#add out8
 
         if (not use_boundary_2) and (not use_boundary_4) and use_boundary_8:
-            out, out16, out32, detail8,out8 = net(im)  # 5层，迭代训练，输入当前图像（并发）,并得到输出，2gpu,12img
+            out, out16, out32, detail8,out8 = net(im)
 
-        if (not use_boundary_2) and (not use_boundary_4) and (not use_boundary_8):#测试下，不加的对比
+        if (not use_boundary_2) and (not use_boundary_4) and (not use_boundary_8):
             out, out16, out32,out8 = net(im)
 
         lossp = criteria_p(out, lb)
@@ -310,37 +304,34 @@ def train():
         loss2 = criteria_16(out16, lb)
         loss3 = criteria_32(out32, lb)
         
-        boundery_bce_loss = 0.#二值化损失
-        boundery_dice_loss = 0.#
+        boundery_bce_loss = 0.
+        boundery_dice_loss = 0.
         
         
         if use_boundary_2: 
-            # if dist.get_rank()==0:
-            #     print('use_boundary_2')
+
             boundery_bce_loss2,  boundery_dice_loss2 = boundary_loss_func(detail2, lb)
             boundery_bce_loss += boundery_bce_loss2
             boundery_dice_loss += boundery_dice_loss2
         
         if use_boundary_4:
-            # if dist.get_rank()==0:
-            #     print('use_boundary_4')
+
             boundery_bce_loss4,  boundery_dice_loss4 = boundary_loss_func(detail4, lb)
             boundery_bce_loss += boundery_bce_loss4
             boundery_dice_loss += boundery_dice_loss4
 
         if use_boundary_8:
-            # if dist.get_rank()==0:
-            #     print('use_boundary_8')
+
             boundery_bce_loss8,  boundery_dice_loss8 = boundary_loss_func(detail8, lb)
             boundery_bce_loss += boundery_bce_loss8
             boundery_dice_loss += boundery_dice_loss8
         #0.5 to 1,convert  #
         loss = lossp +0.3*(loss1+ loss2 + loss3) + boundery_bce_loss + boundery_dice_loss
-        ##print('tmp loss', loss)
-        loss.backward()#?
-        optim.step()#?
 
-        loss_avg.append(loss.item())#los列表
+        loss.backward()
+        optim.step()
+
+        loss_avg.append(loss.item())
 
         loss_boundery_bce.append(boundery_bce_loss.item())
         loss_boundery_dice.append(boundery_dice_loss.item())
@@ -382,9 +373,8 @@ def train():
             loss_boundery_bce = []
             loss_boundery_dice = []
             st = ed
-            # print(boundary_loss_func.get_params())
 
-        if (it + 1) % save_iter_sep == 0:  # and it != 0:
+        if (it + 1) % save_iter_sep == 0:
 
             ## model
             logger.info('evaluating the model ...')
@@ -401,9 +391,7 @@ def train():
                 single_scale2 = MscEvalV0(scale=0.75)
                 mIOU75 = single_scale2(net, dlval, n_classes)
 
-                #mIOU100
-
-            save_pth = osp.join(save_pth_path, 'model_iter{}_mIOU50_{}_mIOU75_{}.pth'
+                save_pth = osp.join(save_pth_path, 'model_iter{}_mIOU50_{}_mIOU75_{}.pth'
                                 .format(it + 1, str(round(mIOU50, 4)), str(round(mIOU75, 4))))
 
             state = net.module.state_dict() if hasattr(net, 'module') else net.state_dict()
@@ -431,7 +419,7 @@ def train():
             logger.info('mIOU50 is: {}, mIOU75 is: {}'.format(mIOU50, mIOU75))
             logger.info('maxmIOU50 is: {}, maxmIOU75 is: {}.'.format(maxmIOU50, maxmIOU75))
 
-            net.train()#切换回训练，之前的保存，net.eval()，有改验证
+            net.train()
 
     ## dump the final model
     save_pth = osp.join(save_pth_path, 'model_final.pth')
@@ -455,9 +443,7 @@ def smallVal():
         print("no mode load_pth_path file !!!quit now")
         return
 
-    ##print('args.local_rank ', args.local_rank)
     torch.cuda.set_device(args.local_rank)
-    ##torch.cuda.set_device(0)
     dist.init_process_group(
         backend='nccl',
         init_method='tcp://127.0.0.1:33274',
@@ -469,7 +455,6 @@ def smallVal():
     n_classes = 19
     n_workers_val = args.n_workers_val
 
-
     dsval = CityScapes(dspth, mode=args.mode, randomscale=randomscale)#'val'
     sampler_val = torch.utils.data.distributed.DistributedSampler(dsval)
     dlval = DataLoader(dsval,
@@ -478,7 +463,6 @@ def smallVal():
                        sampler=sampler_val,
                        num_workers=n_workers_val,
                        drop_last=False)
-
     ## model
     ignore_idx = 255
     net = BiSeNet(backbone=args.backbone, n_classes=n_classes, pretrain_model=args.pretrain_path,
@@ -492,43 +476,12 @@ def smallVal():
 
     net.eval()#模式设置
 
-
     singlesmall_scale1 = MscEvalSmallV0()
     print('start eval',st)
     mIOU50 = singlesmall_scale1(net, dlval, n_classes)
     ed = time.time()
     print('end eval',ed )
     print('total time ', ed-st)
-
-def datasettest(n_classes = 19):
-    preImgDir = './imgpre'
-    print('start eval!')
-    impth = './data/leftImg8bit/test/berlin'
-    gt_list = os.listdir(impth)
-    # init net
-
-    for index, gt_name in enumerate(gt_list):
-        test_path = os.path.join(impth, gt_name)
-        img = Image.open(impth).convert('RGB')
-        img = img.cuda()
-        #img to tensor
-        N, C, H, W = img.size()
-        new_hw = [int(H * self.scale), int(W * self.scale)]
-
-        img = F.interpolate(img, new_hw, mode='bilinear', align_corners=True)
-
-        logits = net(img)[0]  # 保存分割结果图片
-        logits = F.interpolate(logits, size=img.size(),
-                               mode='bilinear', align_corners=True)
-
-        probs = torch.softmax(logits, dim=1)
-        preds = torch.argmax(probs, dim=1)
-        # save_image(imgs,str(i)+'.png')
-        imgFileName = osp.join(preImgDir,gt_name)
-        print('imgFileName',imgFileName)
-        predsimg = preds.squeeze(0).cpu().numpy()
-        cv.imwrite(imgFileName, predsimg)
-
 
 
 if __name__ == "__main__":

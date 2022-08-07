@@ -8,11 +8,11 @@ import os
 import sys, time
 from collections import namedtuple
 
-gts_gray_path = './imgpre'  # 灰度图的路径（原图）
-gts_color_path = './imgprecolor'  # 转换之后的彩色图路径
+gts_gray_path = './imgpre'  # gray,result img by class index
+gts_color_path = './imgprecolor'  # tran color img
 Cls = namedtuple('cls', ['name', 'id', 'color'])
 Clss = [
-    Cls('road', 0, (128, 64, 128)),  # 这些标签颜色来自于github上面的cityscapesscriptshelperslabel.py
+    Cls('road', 0, (128, 64, 128)),  # from github of cityscapesscriptshelperslabel.py
     Cls('sidewalk', 1, (244, 35, 232)),
     Cls('building', 2, (70, 70, 70)),
     Cls('wall', 3, (102, 102, 156)),
@@ -144,27 +144,6 @@ class ImageProc():
     def __init__(self, *args, **kwargs):
         print('1')
 
-    # def drawBoudary(blur=26,alpha=1.0):
-    #     img = Image.open('/home/lab/xyy/STDC-Seg/nets/1.png')
-    #     out = img.resize((1024, 512),
-    #                      Image.ANTIALIAS)  # Image.NEAREST低质量；Image.BILINEAR双线性；Image.BICUBIC 三次样条插值；Image.ANTIALIAS高质量
-    #     img1 = img.convert('L') #图片转换成灰色
-    #     img2 = img1.copy() #复制图片
-    #     img2 = ImageOps.invert(img2) #实现二值图像的黑白翻转
-    #    for i in range(26):# blur模糊度
-    #     img2 = img2.filter(26) #ImageFilter.BLUR为模糊滤波，处理之后的图像会整体变得模糊。
-    #                                                #ImageFilter.CONTOUR为轮廓滤波，将图像中的轮廓信息全部提取出来。
-    #     width, height = img1.size
-    #     for x in range(width):
-    #         for y in range( height):
-    #             a = img1.getpixel((x, y))
-    #             b = img2.getpixel((x, y))
-    #             #img1.putpixel((x,y),dodge())
-    #             img1.putpixel((x, y),min(int(a*255/(256-b*1)),255))#在指定位置上放一像素
-    #
-    #     img1.show()
-    #     img1.save('11.jpg')
-
     def drawBoudary2(self,a):
         img_name = '/home/lab/xyy/STDC-Seg/nets/1.png'
         img = cv.imread(img_name)
@@ -179,35 +158,17 @@ class ImageProc():
                 else:
                     bin_img[i][j] = 0
         cv.imwrite('/home/lab/xyy/STDC-Seg/nets/2.png',bin_img)
-        #cv.imshow("主窗口",bin_img)
         imgs = Image.open('/home/lab/xyy/STDC-Seg/nets/2.png')
         imgs.show()
         return bin_img
     def drawBoudary3(self,a):
-        #folder_label = '/content/data/label/'
-        #folder_img = '/content/data/img/'
-        #folder_path = '/content/data/'
-        #file_list = os.listdir(folder_path)
 
-        #with open('../cityscapes_info.json', 'r') as fr:
-        #    labels_info = json.load(fr)
-        #self.lb_map = {el['id']: el['trainId'] for el in labels_info}  # color,:el['color']
-
-        #label_dict = {'flat': 0, 'human': 1, 'vehicle': 2, 'construction': 3, 'object': 4, 'nature': 5, 'sky': 6}
-        #color = {'flat': (255, 0, 0), 'human': (255, 128, 0), 'vehicle': (255, 255, 0), 'construction': (0, 255, 0),
-        #         'object': (0, 255, 255), 'nature': (0, 0, 255), 'sky': (128, 0, 255)}
-        #if len(os.listdir('/content/data/img')) <= 20:
-        #    for i in tqdm(file_list):
-        #        num = 0
-        #        name, type_ = os.path.splitext(i)
-        #        if type_ == '.json':
-        #            file_path = os.path.join(folder_path, i)
         file = open('/home/lab/xyy/STDC-Seg/nets/test.json').read()
         file = json.loads(file)
-        imgHeight = file['imgHeight']  # 图像高
-        imgWidth = file['imgWidth']  # 图像宽
-        # img = np.zeros((imgHeight, imgWidth, 3), np.uint8)  # 二十四位彩图
-        img = np.zeros((imgHeight, imgWidth), np.uint8)  # 八位图
+        imgHeight = file['imgHeight']
+        imgWidth = file['imgWidth']
+        # img = np.zeros((imgHeight, imgWidth, 3), np.uint8)  # 24 bit color
+        img = np.zeros((imgHeight, imgWidth), np.uint8)  # 8 bit gray
         img.fill(0)
         # print(img.shape)
         objects = file['objects']
@@ -233,7 +194,7 @@ if __name__ == "__main__":
    
     color_dict = nt_dic()
     gray_color(color_dict)
-    # color_gray(color_dict)
+
 
 
 

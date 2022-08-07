@@ -10,7 +10,7 @@ import torchvision
 
 from nets.bisestdcnet import STDCNet1446, STDCNet813,BiSeSTDCNet,BiSeSTDC2
 from modules.bn import InPlaceABNSync as BatchNorm2d
-# BatchNorm2d = nn.BatchNorm2d
+
 
 class ConvBNReLU(nn.Module):
     def __init__(self, in_chan, out_chan, ks=3, stride=1, padding=1, *args, **kwargs):
@@ -21,7 +21,7 @@ class ConvBNReLU(nn.Module):
                 stride = stride,
                 padding = padding,
                 bias = False)
-        # self.bn = BatchNorm2d(out_chan)
+
         self.bn = BatchNorm2d(out_chan, activation='none')
         self.relu = nn.ReLU()
         self.init_weight()
@@ -38,7 +38,7 @@ class ConvBNReLU(nn.Module):
                 nn.init.kaiming_normal_(ly.weight, a=1)
                 if not ly.bias is None: nn.init.constant_(ly.bias, 0)
 
-#?
+
 class BiSeNetOutput(nn.Module):
     def __init__(self, in_chan, mid_chan, n_classes, *args, **kwargs):
         super(BiSeNetOutput, self).__init__()
@@ -72,11 +72,10 @@ class BiSeNetOutput(nn.Module):
 class AttentionRefinementModule(nn.Module):
     def __init__(self, in_chan, out_chan, *args, **kwargs):
         super(AttentionRefinementModule, self).__init__()
-        #print ('in_chan',in_chan)
-        #print('out_chan', out_chan)
+
         self.conv = ConvBNReLU(in_chan, out_chan, ks=3, stride=1, padding=1)
         self.conv_atten = nn.Conv2d(out_chan, out_chan, kernel_size= 1, bias=False)
-        # self.bn_atten = BatchNorm2d(out_chan)
+
         self.bn_atten = BatchNorm2d(out_chan, activation='none')
 
         self.sigmoid_atten = nn.Sigmoid()
@@ -104,7 +103,7 @@ class ContextPath(nn.Module):
         super(ContextPath, self).__init__()
         
         self.backbone_name = backbone
-        #print('backbone',backbone)
+
         if backbone == 'STDCNet1446':
             self.backbone = STDCNet1446(pretrain_model=pretrain_model, use_conv_last=use_conv_last)
             self.arm16 = AttentionRefinementModule(512, 128)
@@ -162,30 +161,30 @@ class ContextPath(nn.Module):
         H0, W0 = x.size()[2:]
 
         if self.backbone_name == 'BiSeSTDCNet':
-            feat2, feat4, feat8, feat16, feat32,feat8sp = self.backbone(x)  # 得到，网络的各层，特征图
+            feat2, feat4, feat8, feat16, feat32,feat8sp = self.backbone(x)
         elif self.backbone_name == 'BiSeSTDC2':
-            feat2, feat4, feat8, feat16, feat32, feat8sp = self.backbone(x)  # 得到，网络的各层，特征图
+            feat2, feat4, feat8, feat16, feat32, feat8sp = self.backbone(x)
         else:
-            feat2, feat4, feat8, feat16, feat32 = self.backbone(x)#得到，网络的各层，特征图
+            feat2, feat4, feat8, feat16, feat32 = self.backbone(x)
 
         H8, W8 = feat8.size()[2:]
-        H4, W4 = feat4.size()[2:]#xyy add 4.15
+        H4, W4 = feat4.size()[2:]
         if self.backbone_name == 'BiSeSTDCNet':
-            H8SP,W8SP = feat8sp.size()[2:]#b,c,h,w?
+            H8SP,W8SP = feat8sp.size()[2:]
         elif  self.backbone_name == 'BiSeSTDC2':
-            H8SP, W8SP = feat8sp.size()[2:]  # b,c,h,w?
+            H8SP, W8SP = feat8sp.size()[2:]
         H16, W16 = feat16.size()[2:]
         H32, W32 = feat32.size()[2:]
         
-        avg = F.avg_pool2d(feat32, feat32.size()[2:])#池化
+        avg = F.avg_pool2d(feat32, feat32.size()[2:])
 
-        avg = self.conv_avg(avg)#卷积，bn,relu,输出128
-        avg_up = F.interpolate(avg, (H32, W32), mode='nearest')#上卷积，尺寸没变化？
+        avg = self.conv_avg(avg)#conv，bn,relu,output128
+        avg_up = F.interpolate(avg, (H32, W32), mode='nearest')
 
-        feat32_arm = self.arm32(feat32)#加注意力
+        feat32_arm = self.arm32(feat32)#
         feat32_sum = feat32_arm + avg_up
-        feat32_up = F.interpolate(feat32_sum, (H16, W16), mode='nearest')#上卷积
-        feat32_up = self.conv_head32(feat32_up)#卷积，bn,relu,输出128
+        feat32_up = F.interpolate(feat32_sum, (H16, W16), mode='nearest')#
+        feat32_up = self.conv_head32(feat32_up)#conv，bn,relu,output128
 
         feat16_arm = self.arm16(feat16)
         feat16_sum = feat16_arm + feat32_up#stage4=,
@@ -197,16 +196,16 @@ class ContextPath(nn.Module):
             feat8_arm = self.arm8(feat8)
             feat8_sum = feat8_arm + feat16_up
             feat8_up = F.interpolate(feat8_sum, (H4, W4), mode='nearest')
-            feat8_up = self.conv_head8(feat8_up)#channel nu吗？
-            return feat2, feat4, feat8, feat16, feat8_up,feat16_up, feat32_up,feat8sp # 返回bnet,feat2,4,8,18;cp8,cp16
+            feat8_up = self.conv_head8(feat8_up)#
+            return feat2, feat4, feat8, feat16, feat8_up,feat16_up, feat32_up,feat8sp # bnet,feat2,4,8,18;cp8,cp16
         elif self.backbone_name == 'BiSeSTDC2':
             feat8_arm = self.arm8(feat8)
             feat8_sum = feat8_arm + feat16_up
             feat8_up = F.interpolate(feat8_sum, (H4, W4), mode='nearest')
-            feat8_up = self.conv_head8(feat8_up)  # channel nu吗？
-            return feat2, feat4, feat8, feat16, feat8_up, feat16_up, feat32_up, feat8sp  # 返回bnet,feat2,4,8,18;cp8,cp16
+            feat8_up = self.conv_head8(feat8_up)
+            return feat2, feat4, feat8, feat16, feat8_up, feat16_up, feat32_up, feat8sp  # bnet,feat2,4,8,18;cp8,cp16
         else:
-            return feat2, feat4, feat8, feat16, feat16_up, feat32_up # 返回bnet,feat2,4,8,18;cp8,cp16
+            return feat2, feat4, feat8, feat16, feat16_up, feat32_up # bnet,feat2,4,8,18;cp8,cp16
 
     def init_weight(self):
         for ly in self.children():
@@ -320,7 +319,7 @@ class BiSeNet(nn.Module):
             print("backbone is not in backbone lists")
             exit(0)
 
-        self.ffm = FeatureFusionModule(inplane, 256)##384--256，386(256，S3，128？）?????
+        self.ffm = FeatureFusionModule(inplane, 256)
 
         self.conv_out = BiSeNetOutput(256, 256, n_classes)#imput ,mid channal,n_class,result_channanl
         self.conv_out8 = BiSeNetOutput(128, 128, n_classes)
@@ -356,9 +355,9 @@ class BiSeNet(nn.Module):
         feat_out_sp16 = self.conv_out_sp16(feat_res16)
 
         if self.backbone == 'BiSeSTDCNet':
-            feat_fuse = self.ffm(feat_sp8, feat_cp4)  ##双分枝融合
+            feat_fuse = self.ffm(feat_sp8, feat_cp4)
         elif self.backbone == 'BiSeSTDC2':
-            feat_fuse = self.ffm(feat_sp8, feat_cp4)  ##双分枝融合
+            feat_fuse = self.ffm(feat_sp8, feat_cp4)
         else:
             feat_fuse = self.ffm(feat_res8, feat_cp8)
 
@@ -368,7 +367,7 @@ class BiSeNet(nn.Module):
         feat_out16 = self.conv_out16(feat_cp8)
         feat_out32 = self.conv_out32(feat_cp16)
 
-        feat_out = F.interpolate(feat_out, (H, W), mode='bilinear', align_corners=True)##上采样8,first out result
+        feat_out = F.interpolate(feat_out, (H, W), mode='bilinear', align_corners=True)##first out result
         feat_out8 =  F.interpolate(feat_out8, (H, W), mode='bilinear', align_corners=True)
         feat_out16 = F.interpolate(feat_out16, (H, W), mode='bilinear', align_corners=True)
         feat_out32 = F.interpolate(feat_out32, (H, W), mode='bilinear', align_corners=True)
@@ -404,7 +403,7 @@ class BiSeNet(nn.Module):
 
 if __name__ == "__main__":
     
-    net = BiSeNet('STDCNet813', 19)
+    net = BiSeNet('BiSeSTDCNet', 19)
     net.cuda()
     net.eval()
     in_ten = torch.randn(1, 3, 768, 1536).cuda()
