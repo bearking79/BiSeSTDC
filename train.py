@@ -474,7 +474,7 @@ def smallVal():
     net.cuda()
     st = time.time()
 
-    net.eval()#模式设置
+    net.eval()#
 
     singlesmall_scale1 = MscEvalSmallV0()
     print('start eval',st)

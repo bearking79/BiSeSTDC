@@ -130,7 +130,7 @@ def process_show(num, nums, pre_fix='', suf_fix=''):
     return
     '''
     rate = num
-    nums
+
     ratenum = round(rate, 3)*100
     bar = 'r%s %g%g [%s%s]%.1f%% %s' %\
         (pre_fix, num, nums, '#'*(int(ratenum) // 5), '_'*(20 - (int(ratenum)//5)), ratenum, suf_fix)

@@ -183,7 +183,7 @@ class MscEvalSmallV0(object):
 
             imgs = F.interpolate(imgs, new_hw, mode='bilinear', align_corners=True)
 
-            logits = net(imgs)[0]#保存分割结果图片
+            logits = net(imgs)[0]#
             #save_image(imgs,str(i)+'.png')
 
             logits = F.interpolate(logits, size=size,
@@ -437,22 +437,7 @@ if __name__ == "__main__":
         os.makedirs(log_dir)
     setup_logger(log_dir)
     
-    #STDC1-Seg50 mIoU 0.7222
-    # evaluatev0('./checkpoints/STDC1-Seg/model_maxmIOU50.pth', dspth='./data', backbone='STDCNet813', scale=0.5, 
-    # use_boundary_2=False, use_boundary_4=False, use_boundary_8=True, use_boundary_16=False)
 
-    #STDC1-Seg75 mIoU 0.7450
-    # evaluatev0('./checkpoints/STDC1-Seg/model_maxmIOU75.pth', dspth='./data', backbone='STDCNet813', scale=0.75, 
-    # use_boundary_2=False, use_boundary_4=False, use_boundary_8=True, use_boundary_16=False)
-
-
-    #STDC2-Seg50 mIoU 0.7424
-    # evaluatev0('./checkpoints/STDC2-Seg/model_maxmIOU50.pth', dspth='./data', backbone='STDCNet1446', scale=0.5, 
-    # use_boundary_2=False, use_boundary_4=False, use_boundary_8=True, use_boundary_16=False)
-
-    #STDC2-Seg75 mIoU 0.7704
-    evaluatev0('./checkpoints/STDC2-Seg/model_maxmIOU75.pth', dspth='./data', backbone='STDCNet1446', scale=0.75, 
-    use_boundary_2=False, use_boundary_4=False, use_boundary_8=True, use_boundary_16=False)
 
    
 

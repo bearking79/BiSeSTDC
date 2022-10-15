@@ -3,7 +3,7 @@ python -m torch.distributed.launch \
 --nproc_per_node=2 train.py \
 --respath checkpoints/BiSeSTDC_seg/ \
 --backbone BiSeSTDCNet \
---mode val \
+--mode train \
 --n_workers_train 2 \
 --n_workers_val 1 \
 --max_iter 160000 \

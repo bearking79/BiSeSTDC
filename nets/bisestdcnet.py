@@ -214,7 +214,7 @@ class STDCNet1446(nn.Module):#STDCNet813,layers=[4,5,3],to [2,2,2]
         self.bn = nn.BatchNorm1d(max(1024, base*16))
         self.relu = nn.ReLU(inplace=True)
         self.dropout = nn.Dropout(p=dropout)
-        self.linear = nn.Linear(max(1024, base*16), num_classes, bias=False)
+        self.linear = nn.Linear(max(1024, base*16), num_classxyy  es, bias=False)
 
         self.x2 = nn.Sequential(self.features[:1])
         self.x4 = nn.Sequential(self.features[1:2])
@@ -534,7 +534,7 @@ class BiSeSTDC2(nn.Module):
 
         self.features = self._make_layers(base, layers, 4, block)#stdc 4layer delete,4.20,add to  five  #xyy5.1
 
-        self.featuresSP = self._make_layers_SP(2*base, [1], 4, block)#ADDsP,xyy  [2]to[1]
+        self.featuresSP = self._make_layers_SP(2*base, [1], 4, block)#ADDsP,[2]to[1]
 
         self.conv_last = ConvX(base * 16, max(1024, base * 16), 1, 1)
         self.gap = nn.AdaptiveAvgPool2d(1)
