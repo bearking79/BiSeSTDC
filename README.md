@@ -29,7 +29,7 @@ Highlights:
 - Python 3.5.6
 - NVIDIA GPU
 - TensorRT v5.1.5.0 (Only need for testing inference speed)
-
+BIiSeSTDCNePre
 This repository has been trained on Tesla V100. Configurations (e.g batch size, image patch size) may need to be changed on different platforms. Also, for fair competition, we test the inference speed on NVIDIA GTX 1080Ti.
 
 ## Installation
@@ -68,7 +68,7 @@ Note: Backbone BiSeSTDC denotes BiSeSTDC, STDCNet813 denotes STDC1, STDCNet1446 
 
 * Train BiSeSTDC:
 
-```bash
+```bashBIiSeSTDCNePre
 export CUDA_VISIBLE_DEVICES=0,1,2
 python -m torch.distributed.launch \
 --nproc_per_node=2 train.py \
@@ -80,7 +80,7 @@ python -m torch.distributed.launch \
 --max_iter 160000 \
 --n_img_per_gpu 6 \
 --use_boundary_8 true \
---pretrain_path checkpoints/STDCNet813M_73.91.tar
+--pretrain_path checkpoints/BIiSeSTDCNePre.tar
 ```
 
 We will save the model's params in model_maxmIOU50.pth for input resolution 512x1024，and model_maxmIOU75.pth for input resolution 768 x 1536.
