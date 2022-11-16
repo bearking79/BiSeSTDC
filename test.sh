@@ -9,5 +9,5 @@ python -m torch.distributed.launch \
 --max_iter 160000 \
 --n_img_per_gpu 6 \
 --use_boundary_8 true \
---pretrain_path checkpoints/STDCNet813M_73.91.tar
+--pretrain_path checkpoints/BIiSeSTDCNePre.tar
 
