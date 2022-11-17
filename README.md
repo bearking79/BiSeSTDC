@@ -80,7 +80,7 @@ python -m torch.distributed.launch \
 --max_iter 160000 \
 --n_img_per_gpu 6 \
 --use_boundary_8 true \
---pretrain_path checkpoints/BIiSeSTDCNePre.tar
+--pretrain_path checkpoints/BiSeSTDCNePre.tar
 ```
 
 We will save the model's params in model_maxmIOU50.pth for input resolution 512x1024，and model_maxmIOU75.pth for input resolution 768 x 1536.

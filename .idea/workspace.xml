@@ -5,14 +5,144 @@
       <change afterPath="$PROJECT_DIR$/checkpoints/BiSeSTDC_seg/BiSeNet-2022-08-06-10-26-16.log" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/checkpoints/BiSeSTDC_seg/BiSeNet-2022-08-06-10-30-29.log" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/checkpoints/BiSeSTDC_seg/BiSeNet-2022-08-06-10-56-10.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/checkpoints/BiSeSTDC_seg/BiSeNet-2022-09-16-08-58-45.log" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/CamVid" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/gtFine" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/data/leftImg8bit" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/119.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/120.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/121.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/122.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/123.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/124.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/125.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/126.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/127.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/128.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/129.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/130.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/131.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/132.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/133.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/134.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/135.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/136.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/137.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/138.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/139.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/140.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/141.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/142.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/143.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/144.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/145.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/146.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/147.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/148.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/149.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/150.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/151.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/152.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/153.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/154.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/155.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/156.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/157.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/158.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/159.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/160.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/161.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/162.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/163.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/164.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/165.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/166.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/167.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/168.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/169.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/170.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/171.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/172.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/173.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/174.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/175.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/176.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/177.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/178.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/179.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/180.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/181.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/182.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/183.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/184.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/185.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/186.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/187.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/188.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/189.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/190.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/191.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/193.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/194.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/195.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/196.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/197.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/198.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/199.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/200.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/201.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/202.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/203.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/204.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/205.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/206.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/207.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/208.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/209.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/210.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/211.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/212.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/213.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/214.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/215.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/216.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/217.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/218.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/219.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/220.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/221.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/222.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/223.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/224.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/225.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/226.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/227.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/228.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/229.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/230.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/231.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/232.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/233.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/234.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/235.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/236.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/237.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/238.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/239.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/241.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/242.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/243.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/244.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/245.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/246.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/247.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/248.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgpre/249.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImageProc.py" beforeDir="false" afterPath="$PROJECT_DIR$/ImageProc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/model_stages.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/model_stages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nets/bisestdcnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/nets/bisestdcnet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.sh" beforeDir="false" afterPath="$PROJECT_DIR$/test.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,14 +150,24 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2CfAO050A4OQnq09U8dVTVVLRNn" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -59,7 +199,14 @@
       <updated>1659183229561</updated>
       <workItem from="1659183237166" duration="933000" />
       <workItem from="1659751817841" duration="4058000" />
-      <workItem from="1659780697504" duration="3794000" />
+      <workItem from="1659780697504" duration="6528000" />
+      <workItem from="1662597281979" duration="20000" />
+      <workItem from="1665841531148" duration="1857000" />
+      <workItem from="1665843414121" duration="36000" />
+      <workItem from="1665843939538" duration="2092000" />
+      <workItem from="1668593081199" duration="731000" />
+      <workItem from="1668594401796" duration="833000" />
+      <workItem from="1668595243929" duration="8816000" />
     </task>
     <task id="LOCAL-00001" summary="8.6">
       <created>1659781177503</created>
@@ -68,33 +215,92 @@
       <option name="project" value="LOCAL" />
       <updated>1659781177503</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="8.6">
+      <created>1659836160333</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1659836160333</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add copyright">
+      <created>1659841997264</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1659841997264</updated>
+    </task>
+    <task id="LOCAL-00004" summary="8.6">
+      <created>1665842974392</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1665842974392</updated>
+    </task>
+    <task id="LOCAL-00005" summary="modify 1015">
+      <created>1665844855585</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1665844855585</updated>
+    </task>
+    <task id="LOCAL-00006" summary="pretrain model">
+      <created>1668593191279</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1668593191279</updated>
+    </task>
+    <task id="LOCAL-00007" summary="premodel param">
+      <created>1668593620674</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1668593620674</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add pre.tar">
+      <created>1668603422701</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1668603422701</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="add copyright" />
     <MESSAGE value="8.6" />
-    <option name="LAST_COMMIT_MESSAGE" value="8.6" />
+    <MESSAGE value="modify 1015" />
+    <MESSAGE value="pretrain model" />
+    <MESSAGE value="premodel param" />
+    <MESSAGE value="add pre.tar" />
+    <option name="LAST_COMMIT_MESSAGE" value="add pre.tar" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="558" y="136" key="CommitChangelistDialog2" timestamp="1659781592646">
+    <state x="655" y="344" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1668603312522">
       <screen x="57" y="24" width="1863" height="1056" />
     </state>
-    <state x="558" y="136" key="CommitChangelistDialog2/57.24.1863.1056@57.24.1863.1056" timestamp="1659781592646" />
-    <state x="482" y="174" key="SettingsEditor" timestamp="1659834468462">
+    <state x="655" y="344" key="#com.intellij.fileTypes.FileTypeChooser/57.24.1863.1056@57.24.1863.1056" timestamp="1668603312522" />
+    <state x="558" y="136" key="CommitChangelistDialog2" timestamp="1668603421479">
       <screen x="57" y="24" width="1863" height="1056" />
     </state>
-    <state x="482" y="174" key="SettingsEditor/57.24.1863.1056@57.24.1863.1056" timestamp="1659834468462" />
-    <state x="588" y="275" key="Vcs.Push.Dialog.v2" timestamp="1659781611333">
+    <state x="558" y="136" key="CommitChangelistDialog2/57.24.1863.1056@57.24.1863.1056" timestamp="1668603421479" />
+    <state x="157" y="96" width="1663" height="884" key="DiffContextDialog" timestamp="1668603345868">
       <screen x="57" y="24" width="1863" height="1056" />
     </state>
-    <state x="588" y="275" key="Vcs.Push.Dialog.v2/57.24.1863.1056@57.24.1863.1056" timestamp="1659781611333" />
-    <state x="649" y="367" key="com.intellij.ide.util.TipDialog" timestamp="1659780718424">
+    <state x="157" y="96" width="1663" height="884" key="DiffContextDialog/57.24.1863.1056@57.24.1863.1056" timestamp="1668603345868" />
+    <state x="588" y="275" key="Vcs.Push.Dialog.v2" timestamp="1668603444768">
       <screen x="57" y="24" width="1863" height="1056" />
     </state>
-    <state x="649" y="367" key="com.intellij.ide.util.TipDialog/57.24.1863.1056@57.24.1863.1056" timestamp="1659780718424" />
+    <state x="588" y="275" key="Vcs.Push.Dialog.v2/57.24.1863.1056@57.24.1863.1056" timestamp="1668603444768" />
+    <state x="649" y="367" key="com.intellij.ide.util.TipDialog" timestamp="1668594405406">
+      <screen x="57" y="24" width="1863" height="1056" />
+    </state>
+    <state x="649" y="367" key="com.intellij.ide.util.TipDialog/57.24.1863.1056@57.24.1863.1056" timestamp="1668594405406" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
